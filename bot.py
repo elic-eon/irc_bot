@@ -3,7 +3,22 @@ import sys
 import logging
 import time
 import operator
-import win32com.client as comclt
+import win32api
+
+VK_CODE = {
+    'backspace':0x08,
+    'enter':0x0D,
+    'left':0x25,
+    'up':0x26,
+    'right':0x27,
+    'down':0x28,
+    'x':0x58,
+    'z':0x5A
+}
+def press(i):
+    win32api.keybd_event(VK_CODE[i], 0, 0, 0)
+    time.sleep(0.2)
+    win32api.keybd_event(VK_CODE[i],0 ,win32con.KEYEVENTF_KEYUP ,0)
 
 def splitword(cmd):
     cmd_len = len(cmd)
@@ -72,35 +87,35 @@ def sendkey(cmd):
 
     while cmd_len > 0:
         if cmd.startswith("up", start_pos) == True:
-            wsh.SendKeys("UP")
+            press("up")
             cmd_len -= 2
             start_pos += 2
         elif cmd.startswith("down", start_pos) == True:
-            wsh.SendKeys("DOWN")
+            press("down")
             cmd_len -= 4
             start_pos += 4
         elif cmd.startswith("left", start_pos) == True:
-            wsh.SendKeys("LEFT")
+            press("left")
             cmd_len -= 4
             start_pos += 4
         elif cmd.startswith("right", start_pos) == True:
-            wsh.SendKeys("RIGHT")
+            press("right")
             cmd_len -= 5
             start_pos += 5
         elif cmd.startswith("start", start_pos) == True:
-            wsh.SendKeys("ENTER")
+            press("enter")
             cmd_len -= 5
             start_pos += 5
         elif cmd.startswith("select", start_pos) == True:
-            wsh.SendKeys("BACKSPACE")
+            press("backspace")
             cmd_len -= 6
             start_pos += 6
         elif cmd.startswith("a", start_pos) == True:
-            wsh.SendKeys("Z")
+            press("z")
             cmd_len -= 1
             start_pos += 1
         elif cmd.startswith("b", start_pos) == True:
-            wsh.SendKeys("X")
+            press("x")
             cmd_len -= 1
             start_pos += 1
         else:
