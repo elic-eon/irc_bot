@@ -121,7 +121,7 @@ def sendkey(cmd):
             start_pos += 1
         else:
             return
-server = "irc.twitch.tw"
+server = "irc.twitch.tv"
 channel = "#k6074282"
 botnick = "irc_bot25638201"
 mode = "normal"
@@ -228,6 +228,6 @@ while 1:
         msgs = text.split()
         nick = msgs[0].split(":")[1].split("!")[0]
         cmd = msgs[3].split(":")[1]
-        if nick == "ssuyi":
+        if nick == "ssuyi" or nick == "k6074282":
             mode = cmd
             irc.send(("PRIVMSG " + nick + " : mode changed\r\n").encode("ascii"))
