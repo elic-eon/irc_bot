@@ -72,40 +72,39 @@ def sendkey(cmd):
 
     while cmd_len > 0:
         if cmd.startswith("up", start_pos) == True:
-			wsh.SendKeys("UP")
-			cmd_len -= 2
+            wsh.SendKeys("UP")
+            cmd_len -= 2
             start_pos += 2
         elif cmd.startswith("down", start_pos) == True:
-		    wsh.SendKeys("DOWN")
+            wsh.SendKeys("DOWN")
             cmd_len -= 4
             start_pos += 4
         elif cmd.startswith("left", start_pos) == True:
-		    wsh.SendKeys("LEFT")
+            wsh.SendKeys("LEFT")
             cmd_len -= 4
             start_pos += 4
         elif cmd.startswith("right", start_pos) == True:
-		    wsh.SendKeys("RIGHT")
+            wsh.SendKeys("RIGHT")
             cmd_len -= 5
             start_pos += 5
         elif cmd.startswith("start", start_pos) == True:
-		    wsh.SendKeys("ENTER")
+            wsh.SendKeys("ENTER")
             cmd_len -= 5
             start_pos += 5
         elif cmd.startswith("select", start_pos) == True:
-		    wsh.SendKeys("BACKSPACE")
+            wsh.SendKeys("BACKSPACE")
             cmd_len -= 6
             start_pos += 6
         elif cmd.startswith("a", start_pos) == True:
-		    wsh.SendKeys("Z")
+            wsh.SendKeys("Z")
             cmd_len -= 1
             start_pos += 1
         elif cmd.startswith("b", start_pos) == True:
-		    wsh.SendKeys("X")
+            wsh.SendKeys("X")
             cmd_len -= 1
             start_pos += 1
-		else:
-			return
-			
+        else:
+            return
 server = "irc.freenode.net"
 channel = "#nctu-lab224"
 botnick = "irc_bot25638201"
@@ -120,7 +119,7 @@ logger = logging.getLogger('irc_log')
 hdlr = logging.FileHandler('irc.log')
 formatter = logging.Formatter('%(asctime)s %(message)s')
 hdlr.setFormatter(formatter)
-logger.addHandler(hdlr) 
+logger.addHandler(hdlr)
 logger.setLevel(logging.INFO)
 
 irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -148,7 +147,7 @@ while 1:
             msg = "User: " + nick + " cmd: " + cmd + "(" + cmd + ")"
             print (msg)
             logger.info(msg)
-			sendkey(cmd)
+            sendkey(cmd)
         elif mode == "democracy":
             if timer == None:
                 timer = time.time()
@@ -171,7 +170,7 @@ while 1:
                     print (vote)
                     print (msg)
                     logger.info(msg)
-					sendkey(cmd)
+                    sendkey(cmd)
                 vote["up"] = 0
                 vote["down"] = 0
                 vote["left"] = 0
@@ -197,7 +196,7 @@ while 1:
                     msg = "User: " + nick + " cmd: "
                     for i in range(repeat):
                         msg += longest
-						sendkey(longest)
+                        sendkey(longest)
                     print (msg)
                     logger.info(msg)
                 longest = ""
@@ -208,7 +207,7 @@ while 1:
             if parsed[long_cmd] > repeat:
                 longest = long_cmd
                 repeat = parsed[long_cmd]
-                print(longest) 
+                print(longest)
     if text.find(("PRIVMSG "+botnick +" :")) != -1:
         msgs = text.split()
         nick = msgs[0].split(":")[1].split("!")[0]
