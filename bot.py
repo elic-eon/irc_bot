@@ -142,10 +142,9 @@ logger.setLevel(logging.INFO)
 irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print ("connect to:"+server)
 irc.connect((server, 6667))
-irc.send(("USER k6074282\r\n").encode("ascii"))
 irc.send(("PASS oauth:"+ auth + "\r\n").encode("ascii"))
 irc.send(("NICK "+ botnick +"\n").encode("ascii"))
-irc.send(("PRIVMSG nickserv :iNOOPE\r\n").encode("ascii"))
+irc.send(("USER k6074282 k6074282 bla :k6074282\r\n").encode("ascii"))
 irc.send(("JOIN "+ channel +"\n").encode("ascii"))
 
 while 1:
