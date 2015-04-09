@@ -144,8 +144,6 @@ irc.send(("USER "+ botnick +" "+ botnick +" "+ botnick +" :This is a fun bot!\n"
 irc.send(("NICK "+ botnick +"\n").encode("ascii"))
 irc.send(("PRIVMSG nickserv :iNOOPE\r\n").encode("ascii"))
 irc.send(("JOIN "+ channel +"\n").encode("ascii"))
-wsh= comclt.Dispatch("WScript.Shell")
-wsh.AppActivate("VisualBoyAdvance")
 
 while 1:
     text=irc.recv(2040).decode("ascii")
