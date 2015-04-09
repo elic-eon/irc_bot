@@ -9,10 +9,10 @@ import win32con
 VK_CODE = {
     'backspace':0x08,
     'enter':0x0D,
-    'left':0x25,
-    'up':0x26,
-    'right':0x27,
-    'down':0x28,
+    'left':0x4A,
+    'up':0x49,
+    'right':0x4C,
+    'down':0x4B,
     'x':0x58,
     'z':0x5A
 }
