@@ -11,8 +11,8 @@ VK_CODE = {
     'enter':0x0D,
     'left':0x4A,
     'up':0x49,
-    'right':0x4C,
-    'down':0x4B,
+    'right':0x4B,
+    'down':0x4C,
     'x':0x58,
     'z':0x5A
 }
