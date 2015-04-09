@@ -4,6 +4,7 @@ import logging
 import time
 import operator
 import win32api
+import win32con
 
 VK_CODE = {
     'backspace':0x08,
