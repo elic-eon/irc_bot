@@ -9,10 +9,10 @@ import win32con
 VK_CODE = {
     'backspace':0x08,
     'enter':0x0D,
-    'left':0x4A,
+    'left':0x4C,
     'up':0x49,
     'right':0x4B,
-    'down':0x4C,
+    'down':0x4A,
     'x':0x58,
     'z':0x5A
 }
@@ -121,10 +121,11 @@ def sendkey(cmd):
             start_pos += 1
         else:
             return
-server = "irc.freenode.net"
-channel = "#nctu-lab224"
+server = "irc.twitch.tw"
+channel = "#k6074282"
 botnick = "irc_bot25638201"
-mode = "violence"
+mode = "normal"
+auth = "wemhbtwacmyu7sl70h1yxkxoktoek0"
 timer = None
 vote = dict()
 longest = ""
@@ -141,7 +142,8 @@ logger.setLevel(logging.INFO)
 irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print ("connect to:"+server)
 irc.connect((server, 6667))
-irc.send(("USER "+ botnick +" "+ botnick +" "+ botnick +" :This is a fun bot!\n").encode("ascii"))
+irc.send(("USER k6074282\r\n").encode("ascii"))
+irc.send(("PASS "+ auth + "\r\n").encode("ascii"))
 irc.send(("NICK "+ botnick +"\n").encode("ascii"))
 irc.send(("PRIVMSG nickserv :iNOOPE\r\n").encode("ascii"))
 irc.send(("JOIN "+ channel +"\n").encode("ascii"))
