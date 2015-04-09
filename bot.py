@@ -162,4 +162,11 @@ while 1:
             if parsed[long_cmd] > repeat:
                 longest = long_cmd
                 repeat = parsed[long_cmd]
-                print(longest)
+                print(longest) 
+    if text.find(("PRIVMSG "+botnick +" :")) != -1:
+        msgs = text.split()
+        nick = msgs[0].split(":")[1].split("!")[0]
+        cmd = msgs[3].split(":")[1]
+        if nick == "ssuyi":
+            mode = cmd
+            irc.send(("PRIVMSG " + nick + " : mode changed\r\n").encode("ascii"))
